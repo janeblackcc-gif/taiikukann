@@ -1,204 +1,280 @@
-/* 账户页面专用样式 - 紧凑版修复 */
-
-/* 1. 调整卡片列表容器，让它铺满 */
-.card-list {
-    background-color: transparent;
-    border-radius: 0;
-    margin: 6px 0 0 0;
-    padding: 0;
-    width: 100%;
-}
-
-/* 2. 筛选图片自适应 */
-.filter-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 12px;
-}
-
-/* 3. 预约卡片核心样式 - 移除固定宽高，改为自适应 */
+/* 账户页面专用样式 */
 .booking-card {
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* 模拟原图轻微阴影 */
-    margin: 0 0 15px 0; /* 卡片间距 */
-    padding: 16px;      /* 内部间距 */
-    display: block;     /* 块级显示 */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-left: -7px;
+    padding: 16px;
+    display: flex;
     position: relative;
-    width: 100%;        /* 宽度铺满 */
-    height: auto;       /* 高度根据内容自动撑开 */
-    border: 1px solid #f2f2f2; /* 极淡的边框 */
-    margin-left: 0;     /* 修正之前的偏移 */
+    width: 262.5px;
+    height: 197px;
 }
 
-/* 4. 状态标签 (右上角已预约) */
 .status-tag {
     position: absolute;
-    right: 16px;
+    right: 20px;
     top: 16px;
     border: 1px solid #4CAF50;
     color: #4CAF50;
-    border-radius: 4px; /* 圆角小一点 */
+    border-radius: 12px;
     font-size: 12px;
-    padding: 1px 6px;
-    width: auto;
-    height: auto;
-    line-height: normal;
-    background-color: #fff;
-}
-
-/* 5. 卡片头部 (图标 + 标题) */
-.card-header {
-    border-bottom: 1px solid #f5f5f5; /* 极淡的分隔线 */
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 0;
+    width: 56px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.card-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 0;
 }
 
 .card-header .warn-icon {
-    position: static; /* 移除绝对定位 */
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    margin-left: 0;
-    margin-top: 0;
+    position: absolute;
+    left: -28px;
+    top: 0;
+    width: 24px;
+    height: 24px;
 }
 
 .booking-title {
     font-size: 16px;
-    font-weight: 600; /* 加粗标题 */
+    font-weight: 500;
     color: #333;
     margin-left: 0;
 }
 
-/* 6. 卡片内容区域 */
 .card-content {
-    padding-left: 0; /* 移除之前的左缩进 */
+    padding-left: 20px;
+}
+
+.card-content > div > div {
+    text-align: left;
 }
 
 .booking-info {
-    margin-top: 0;
+    margin-top: 12px;
     color: #666;
-    font-size: 13px; /* 字体稍微调小 */
-    line-height: 1.6; /* 增加行高，提升可读性 */
+    font-size: 14px;
 }
 
 .booking-id {
-    margin-bottom: 6px;
-    font-size: 13px;
-    color: #bfa25f; /* 调整为参考图的金色/土黄色 */
-    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #B88608;
 }
 
-.date-row, .time-row {
-    margin-bottom: 4px;
-    margin-left: 0;
-    display: flex;
-    align-items: center;
+.date-row {
+    margin-bottom: 0px;
+    margin-left: -3px;
+}
+
+.time-row {
+    margin-bottom: 0px;
+    margin-left: -2px;
 }
 
 .location-row {
-    margin-bottom: 0;
-    margin-top: 4px;
+    margin-bottom: 0px;
 }
 
 .info-icon {
-    height: 14px;
-    width: 14px;
+    height: 16px;
     vertical-align: middle;
-    margin-right: 6px;
 }
 
-/* 修正图标左右间距 */
-.icon-left { margin-right: 6px; }
-.icon-right { margin-left: 6px; }
+.icon-left {
+    margin-right: 4px;
+}
 
-/* 7. Tab 导航样式优化 */
+.icon-right {
+    margin-left: 4px;
+}
+
+.action-button {
+    margin-top: 11px;
+    margin-right: 140px;
+    width: 51.94px;
+    height: 24px;
+    background: none;
+    border: 1px solid #B71C1C;
+    color: #B71C1C;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+}
+
+.banner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.banner-image {
+    width: 365px;
+    height: 104px;
+    margin-left: -19px;
+}
+
+.card-list {
+    background-color: #F5F5F5;
+    border-radius: 8px;
+    margin: 20px 0; 
+    padding: 16px;
+    width: 280.5px;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.filter-image {
+    width: 280px;
+    height: auto;
+}
+
+/* 导航标签样式 */
 .tab-navigation {
     display: flex;
-    gap: 0;
-    padding: 0;
-    margin-bottom: 15px;
-    justify-content: space-between; /* 两端对齐或改为 space-around */
+    gap: 20px;
+    padding: 5px 0;
+    margin-bottom: 0;
+    justify-content: center;
     width: 100%;
-    border-bottom: 1px solid #f0f0f0;
 }
 
 .tab-item {
-    font-size: 15px;
-    padding: 10px 0;
+    font-size: 14px;
+    padding: 5px 5px;
     cursor: pointer;
-    color: #999;
+    color: #666;
     position: relative;
-    flex: 1; /* 平分宽度 */
-    text-align: center;
 }
 
 .tab-item.active {
     color: #006633;
-    font-weight: 600;
+    font-weight: 500;
 }
 
-/* 绿色下划线 */
 .tab-item.active:after {
     content: '';
     position: absolute;
     bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%); /* 居中 */
-    width: 40px; /* 控制下划线长度 */
-    height: 3px;
+    left: -18px;
+    width: 100px;
+    height: 2px;
     background-color: #006633;
-    border-radius: 2px;
 }
 
-/* 8. 页面其他调整 */
-.banner-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0;
-}
-
-.banner-image {
-    width: 100%;
-    height: auto;
-    margin-left: 0;
-    display: block;
-}
-
-/* 内容头部样式覆盖 */
+/* 内容头部样式 */
 .content-header {
-    display: block; /* 改为块级 */
-    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
     padding-bottom: 0;
+    border-bottom: 1px solid #eee;
 }
 
-/* 分页 */
+/* 过滤区域样式 */
+.filter-section {
+    justify-content: center;
+    padding: 10px;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* 分页样式 */
 .pagination {
     display: flex;
     justify-content: center;
-    margin: 8px 0 0 0;
+    margin: 20px 0;
 }
 
-/* 模态框保持不变，略微优化显示 */
-.modal-content {
-    width: 90%;
-    max-width: 320px;
-}
-/* 消除容器底部间距 - 实现紧凑布局 */
-.content-wrapper {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+.pagination button {
+    margin: 0 4px;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
 }
 
-.main-content {
-    padding-bottom: 0 !important;
+.pagination button.active {
+    background: #006633;
+    color: white;
 }
 
-.main-container {
-    padding-bottom: 0 !important;
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
+
+/* 模态框样式 */
+.booking-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    width: 317px;
+    height: 310px;
+    border-radius: 8px;
+    padding: 16px 20px; /* 顶部内边距减小 */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content h2 {
+    font: 24px Roboto, sans-serif;
+    margin-bottom: 15px; /* 原为20px */
+    color: #333;
+  }
+  
+  .booking-details {
+    margin-bottom: 20px; /* 减小底部边距 */
+  }
+  
+  .detail-row {
+    margin-bottom: 10px; /* 减小行间距，原为15px */
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6); /* 相当于#00000099 */
+    line-height: 1.3; /* 减小行高使文本更紧凑 */
+  }
+  
+  .detail-label {
+    display: inline-block;
+    width: 80px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+  }
+  
+  .confirm-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #006633;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #004d26;
+  }

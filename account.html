@@ -6,6 +6,13 @@
     <title>中山大学体育场馆预订系统</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <style>
+    /* 覆盖全局样式，消除强制撑开的高度 */
+        .main-container {
+            min-height: auto !important;
+            padding-bottom: 10px !important; /* 稍微留一点点底边距即可 */
+    }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -105,7 +112,7 @@
                 contentGrid.innerHTML = '';
                 
                                
-                // 创建今天的预约卡片
+              // 创建今天的预约卡片
                 const todayCard = document.createElement('div');
                 todayCard.className = 'booking-card';
                 todayCard.innerHTML = `
@@ -115,7 +122,7 @@
                             <div class="booking-title">深圳校区健身房</div>
                         </div>
                         <div class="booking-info">
-                            <div class="booking-id">#RB-96JVNVFW94</div>
+                            <div class="booking-id">#RB-96JVNVFW94 运动时 ¥5</div>
                             
                             <div class="date-row">
                                 <img src="image/calendar-icon.png" class="info-icon icon-left">
@@ -206,7 +213,7 @@
     </script>
      <!-- lower 放在页面最后，作为图片展示 -->
     
-     <div class="lower" style="text-align:center; margin: -40px 0 0 0;">
+     <div class="lower" style="text-align:center; margin: -24px 0 12px 0;">
         <img src="image/lower.jpg" alt="页面底部图片" style="max-width:100%;height:auto;">
     </div>
 </body>
