@@ -82,16 +82,16 @@
                 switch(day) {
                     case 1: // 周一
                     case 5: // 周五
-                        return "16:00 - 18:00";
+                        return "20:00 - 22:00";
                     case 2: // 周二
                     case 4: // 周四
-                        return "18:00 - 20:00";
+                        return "20:00 - 22:00";
                     case 3: // 周三
                         return "20:00 - 22:00";
                     case 6 : case 0: // 周六
-                        return "18:00 - 20:00";
+                        return "20:00 - 22:00";
                     default:
-                        return "16:00 - 18:00"; // 其他日期默认时段
+                        return "20:00 - 22:00"; // 其他日期默认时段
                 }
             }
             
@@ -104,36 +104,7 @@
                 const contentGrid = document.querySelector('.content-grid');
                 contentGrid.innerHTML = '';
                 
-                // 创建明天的预约卡片
-                const tomorrowCard = document.createElement('div');
-                tomorrowCard.className = 'booking-card';
-                tomorrowCard.innerHTML = `
-                    <div class="card-content">
-                        <div class="card-header">
-                            <img src="image/warn.png" alt="警告" class="warn-icon">
-                            <div class="booking-title">深圳校区健身房</div>
-                        </div>
-                        <div class="booking-info">
-                            <div class="booking-id">#RB-YU1BA0SCQM</div>
-                            
-                            <div class="date-row">
-                                <img src="image/calendar-icon.png" class="info-icon icon-left">
-                                ${tomorrow.getFullYear()}-${(tomorrow.getMonth() + 1).toString().padStart(2, '0')}-${tomorrow.getDate().toString().padStart(2, '0')}
-                                <img src="image/calendar-icon2.png" class="info-icon icon-right">
-                            </div>
-                            <div class="time-row">
-                                ${getBookingTimeByWeekday(tomorrow.getDay())}
-                                <img src="image/clock-icon.png" class="info-icon icon-right">
-                            </div>
-                            
-                            <div class="location-row">深圳校区健身房-场地1</div>
-                        </div>
-                        <button class="action-button">取消</button>
-                    </div>
-                    <span class="status-tag">已预约</span>
-                `;
-                contentGrid.appendChild(tomorrowCard);
-                
+                               
                 // 创建今天的预约卡片
                 const todayCard = document.createElement('div');
                 todayCard.className = 'booking-card';
