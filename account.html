@@ -11,7 +11,26 @@
         .main-container {
             min-height: auto !important;
             padding-bottom: 10px !important; /* 稍微留一点点底边距即可 */
+            padding-top: 8px !important;      /* 原本是 20px，改成 8px 就会紧凑很多 */
     }
+        /* ⬇️⬇️⬇️ 新增代码：收紧卡片和按钮之间的距离 ⬇️⬇️⬇️ */
+
+        /* 1. 减小卡片列表容器的下边距 */
+        .card-list {
+            margin-bottom: 0px !important; /* 原本可能是 20px */
+            padding-bottom: 0px !important; /* 减少内部留白 */
+        }
+
+        /* 2. 减小分页按钮的上边距 */
+        .pagination {
+            margin-top: 5px !important;  /* 原本是 20px，改成 5px 就会紧凑很多 */
+            margin-bottom: 15px !important; /* 保持底部的距离 */
+        }
+
+        /* 3. 调整外层大框的内边距，让整体看起来更小巧 */
+        .content-wrapper {
+            padding-bottom: 10px !important; /* 收缩大框底部 */
+        }
     </style>
 </head>
 <body>
@@ -73,7 +92,7 @@
           <div class="detail-row"><span class="detail-label">场馆：</span><span id="modal-venue" style="margin-left:-38px">深圳校区健身房</span></div>
           <div class="detail-row"><span class="detail-label">预约日期：</span><span id="modal-date" style="margin-left:-8px"></span></div>
           <div class="detail-row"><span class="detail-label">预约时段：</span><span id="modal-time" style="margin-left:-8px" ></span></div>
-          <div class="detail-row"><span class="detail-label">场地名称：</span><span id="modal-location" style="margin-left:-8px">场地1</span></div>
+          <div class="detail-row"><span class="detail-label">场地名称：</span><span id="modal-location" style="margin-left:-8px">深圳校区健身房-场地1</span></div>
           <div class="detail-row"><span class="detail-label">预约编号：</span><span id="modal-id" style="margin-left:-8px"></span></div>
           <div class="detail-row"><span class="detail-label">费用：</span><span id="modal-fee" style="margin-left:-38px">运动时 ¥5</span></div>
         </div>
@@ -170,7 +189,8 @@
                 bookingCards.forEach(card => {
                     card.addEventListener('click', function() {
                         // 从卡片中提取信息
-                        const bookingId = card.querySelector('.booking-id').textContent;
+                        let rawIdText = card.querySelector('.booking-id').textContent;
+                        const bookingId = rawIdText.split(' ')[0];
                         const dateText = card.querySelector('.date-row').textContent.trim();
                         const timeText = card.querySelector('.time-row').textContent.trim();
                         const locationText = card.querySelector('.location-row').textContent;
