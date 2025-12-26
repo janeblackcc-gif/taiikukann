@@ -182,31 +182,16 @@
             // 更新预约日期
             function updateBookings() {
                 const today = new Date();
-                const tomorrow = new Date(today);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-
+                
                 // 获取DOM元素
                 const myBookingsList = document.querySelector('.my-bookings .booking-list');
                 const historyBookingsList = document.querySelector('.history-bookings .booking-list');
+                
+                // 1. 清空现有列表
                 myBookingsList.innerHTML = '';
                 historyBookingsList.innerHTML = '';
 
-                // 明天的预约 => "我的预约"
-                const tomorrowItem = document.createElement('li');
-                tomorrowItem.className = 'booking-item';
-                tomorrowItem.innerHTML = `
-                    <div class="booking-venue">深圳校区健身房-场地1</div>
-                    <div class="booking-date">
-                        ${tomorrow.getFullYear()}年${tomorrow.getMonth() + 1}月${tomorrow.getDate()}日
-                        ${getBookingTimeByWeekday(tomorrow.getDay())}
-                    </div>
-                    <div class="booking-actions">
-                        <button class="btn-small btn-cancel">取消预约</button>
-                    </div>
-                `;
-                myBookingsList.appendChild(tomorrowItem);
-
-                // 今天的预约 => "历史预约"
+                // 2. 设置 "我的预约" 为【今天】的信息
                 const todayItem = document.createElement('li');
                 todayItem.className = 'booking-item';
                 todayItem.innerHTML = `
@@ -215,8 +200,19 @@
                         ${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日
                         ${getBookingTimeByWeekday(today.getDay())}
                     </div>
+                    <div class="booking-actions">
+                        <button class="btn-small btn-cancel">取消预约</button>
+                    </div>
                 `;
-                historyBookingsList.appendChild(todayItem);
+                myBookingsList.appendChild(todayItem);
+
+                // 3. 设置 "历史预约" 为空状态文字
+                // 这里使用了内联样式来匹配你截图中的灰色文字效果
+                historyBookingsList.innerHTML = `
+                    <div style="color: #666; font-size: 16px; padding: 10px 0;">
+                        您没有历史预约
+                    </div>
+                `;
             }
             
             /**
