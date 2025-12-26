@@ -4,7 +4,7 @@
 .card-list {
     background-color: transparent;
     border-radius: 0;
-    margin: 10px 0; 
+    margin: 6px 0 0 0;
     padding: 0;
     width: 100%;
 }
@@ -181,11 +181,24 @@
 .pagination {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 8px 0 0 0;
 }
 
 /* 模态框保持不变，略微优化显示 */
 .modal-content {
     width: 90%;
     max-width: 320px;
+}
+/* 消除容器底部间距 - 实现紧凑布局 */
+.content-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.main-content {
+    padding-bottom: 0 !important;
+}
+
+.main-container {
+    padding-bottom: 0 !important;
 }
