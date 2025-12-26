@@ -8,35 +8,37 @@
 body {
     background-color: #F0F0F0;
     color: #333;
-    line-height: 1.5;
+    line-height: 1.4; /* 稍微减小行高 */
 }
 
 /* 头部样式 */
 .header {
     background-color: #006633;
-    padding: 0 20px;
-    height: 64px;
+    padding: 0 15px; /* 减小左右内边距 */
+    height: 56px; /* 稍微压扁头部，原64px */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    height: 100%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .logo {
-    height: 40px;
-    width: 140px;
+    height: 32px; /* 稍微调小Logo适配高度 */
+    width: auto;
     margin-right: 8px;
 }
 
 .title {
     color: #fff;
     margin-left: 20px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -59,32 +61,41 @@ body {
     background-color: #FFFFFF;
     border: 1px solid #fff;
     color: #006633;
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 4px 12px;
+    border-radius: 30px;
     cursor: pointer;
     margin-left: 10px;
-    font: 14.4px Avenir, Helvetica, Arial, sans-serif;
-    border-radius: 30px;
+    font-size: 13px;
 }
 
 .logout-btn {
     background-color: transparent;
     border: 1px solid #fff;
     color: #FFFFFF;
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 4px 12px;
+    border-radius: 30px;
     cursor: pointer;
     margin-left: 10px;
-    font-size: 14px;
-    border-radius: 30px;
+    font-size: 13px;
 }
 
 /* 主容器样式 */
 .main-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    min-height: calc(100vh - 64px);
+    padding: 10px; /* 减小外部间距，原20px */
+    min-height: calc(100vh - 56px);
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 12px; /* 大幅减小内部间距，原20px */
+    margin-bottom: 15px;
+    width: 100%; /* 确保填满 */
 }
 
 /* 内容头部 */
@@ -92,20 +103,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 12px; /* 减小间距 */
+    padding-bottom: 8px;
     border-bottom: 1px solid #eee;
 }
 
 .page-title {
-    font: 24px, sans-serif;
+    font-size: 18px; /* 稍微减小标题 */
     color: #333333;
-    width: 96px;
-    height: 36px;
+    font-weight: 600;
 }
 
 .btn {
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     border: none;
@@ -115,114 +125,112 @@ body {
 .btn-primary {
     background-color: #004D26;
     color: white;
-    width: 96px;
-    height: 44px;
-    font: 16px Arial,sans-serif;
+    display: flex;
+    align-items: center;
+    height: 36px; /* 减小按钮高度 */
 }
 
-/* 内容网格 */
+/* 内容网格布局 */
 .content-grid {
     display: flex;
-    gap: 20px;
+    gap: 12px; /* 减小左右分栏间距 */
 }
 
 /* 场馆选择区域 */
 .venue-selection {
     flex: 2;
-    width: 306.59px;
-    height: 576.81px;
+    /* 移除固定宽高，改为自适应 */
+    width: 100%; 
 }
 
 .venue-info {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 12px; /* 紧凑化 */
 }
 
 .venue-image {
-    width: 160px;
-    height: 110px;
-    margin-right: 16px;
-    border-radius: 4px;
+    width: 120px; /*稍微调小图片 */
+    height: 80px;
+    margin-right: 12px;
+    border-radius: 6px;
     object-fit: cover;
-    border-radius: 7px;
 }
 
 .venue-name {
     font-size: 16px;
-    margin-bottom: 5px;
-    font-weight: 500;
+    margin-bottom: 4px;
+    font-weight: 600;
 }
 
 .venue-location {
     color: #666;
-    margin-bottom: 5px;
-    font-size: 16px;
+    margin-bottom: 2px;
+    font-size: 13px;
 }
 
 .venue-actions {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /* 日期选择器 */
 .date-selector {
     display: flex;
-    margin-bottom: 20px;
-    margin-left: -2px;
+    margin-bottom: 15px;
     overflow-x: auto;
-    background-color: #F0F0F0;
-    padding: 8px;
-    margin-right: 8px;
+    background-color: #F8F8F8;
+    padding: 6px;
     border-radius: 8px;
+    gap: 6px;
 }
 
 .date-item {
-    width: 80px;
-    height: 87.38px;
+    min-width: 75px;
+    height: auto; /* 高度自适应 */
     border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: 8px;
-    margin-right: 8px;
+    border-radius: 6px;
+    padding: 6px 4px;
     text-align: center;
     cursor: pointer;
     background-color: #FFFFFF;
-    border-radius: 7px;
+    flex: 1; /* 平分宽度 */
 }
 
 .date-item.selected {
     background-color: #006633;
-    margin-right: 7px;
-    padding: 8px;
-    border-radius: 7px;
-    box-shadow: 0 0 0 1.2px #ff8400;
-}
-
-.date-item:not(.selected) .date-day {
-    color: #666666;
-}
-
-.date-item:not(.selected) .date-number {
-    color: #666666;
-}
-
-.date-item:not(.selected) .date-available {
-    color: #006633;
+    border-color: #006633;
+    box-shadow: 0 0 0 1px #ff8400; /* 保持原有的橙色高亮 */
 }
 
 .date-day {
     font-weight: 500;
-    font-size: 12.8px;
-    color: #E6F3ED;
+    font-size: 12px;
+    margin-bottom: 2px;
 }
 
 .date-number {
-    color: #E6F3ED;
-    font-size: 16px;
-    margin: 3px 0;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 2px 0;
 }
 
 .date-available {
-    color: #999;
-    font-size: 12.8px;
+    font-size: 12px;
+}
+
+/* 选中状态文字颜色 */
+.date-item.selected .date-day,
+.date-item.selected .date-number,
+.date-item.selected .date-available {
+    color: #fff;
+}
+
+/* 未选中状态文字颜色 */
+.date-item:not(.selected) .date-day,
+.date-item:not(.selected) .date-number {
+    color: #666;
+}
+.date-item:not(.selected) .date-available {
+    color: #006633;
 }
 
 /* 时间表格 */
@@ -231,7 +239,7 @@ body {
     overflow-x: auto;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    margin-left: -6px;
+    margin-bottom: 10px;
 }
 
 table {
@@ -240,64 +248,59 @@ table {
 }
 
 th, td {
-    padding: 8px;
+    padding: 6px 8px; /* 减小表格内边距 */
     text-align: center;
     border-bottom: 1px solid #e0e0e0;
-    font: 16px Arial, sans-serif;
-    width: 150px;
-    height: 41px;
+    font-size: 14px;
+    height: 36px; /* 压扁表格行 */
     vertical-align: middle;
 }
 
 th {
-    background-color: #f0f0f0;
+    background-color: #f9f9f9;
     font-weight: 500;
 }
 
 .slot-btn {
-    padding: 6px 10px;
+    padding: 4px 8px;
     border-radius: 4px;
     border: none;
-    width: 138.59px;
-    height: 40px;
+    width: 100%; /* 按钮宽度填满单元格 */
+    max-width: 120px;
+    height: 28px;
+    font-size: 12px;
     cursor: not-allowed;
-    font-size: 14px;
-    border-radius: 7px;
-}
-
-.slot-btn.over {
-    color: #a8a7a7;
-    width: 138.59px;
-    height: 40px;
 }
 
 .slot-btn.sold {
     background-color: #E0E0E0;
     color: #9c9b9b;
-    border-radius: 4px;
-    font: 16px Arial, sans-serif;
-    filter: contrast(1.17);
+}
+
+.text-status {
+    color: #a8a7a7;
+    font-size: 13px;
 }
 
 /* 侧边栏 */
 .sidebar {
     flex: 1;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    padding: 20px;
-    width: 306.59px;
-    height: 488.03px;
-    margin-left: -6px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 12px; /* 紧凑侧边栏 */
+    /* 移除固定宽高度 */
+    height: auto; 
+    min-height: 200px;
 }
 
 .sidebar-title {
-    margin-bottom: 16px;
-    font-size: 19.2px Arial, sans-serif;
-    padding-bottom: 10px;
-    color: #333333;
-    font-weight: 500;
-    width: 274.59px;
-    height: 28.8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding-bottom: 6px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    width: 100%;
 }
 
 .booking-list {
@@ -305,38 +308,39 @@ th {
 }
 
 .booking-item {
-    margin-bottom: 8px;
-    margin-left: -3px;
-    padding: 8px;
-    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 8px; /* 减小列表项间距 */
+    padding: 10px; /* 减小内边距 */
+    border: 1px solid #eee;
     background-color: #FFFFFF;
-    width: 274.59px;
-    height: 93.61px;
-    border-radius: 3px;
-}
-
-.history-bookings .booking-item {
-    height: 61.61px;
+    width: 100%; /* 宽度填满 */
+    height: auto; /* 高度自适应内容，这是紧凑的关键 */
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
 }
 
 .booking-venue {
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
 }
 
 .booking-date {
     color: #666;
-    font-size: 14.4px;
+    font-size: 13px;
+    line-height: 1.3;
 }
 
 .booking-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 8px;
+    margin-top: 6px; /* 按钮离文字近一点 */
 }
 
 .btn-small {
-    font: 12px Arial, sans-serif;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 3px;
 }
 
 .btn-cancel {
@@ -344,39 +348,43 @@ th {
     color: #FFFFFF;
     border: none;
     cursor: pointer;
-    height: 18px;
-    width: 48px;
-    margin-right: 210px;
+    /* 移除之前的margin-right大间距，改用flex布局控制 */
+    width: auto;
 }
 
-/* 响应式设计 */
+/* 响应式设计 - 针对手机屏幕 */
 @media (max-width: 900px) {
     .content-grid {
-        flex-direction: column;
+        flex-direction: column; /* 上下排列 */
+        gap: 15px;
     }
     
     .desktop-only {
         display: none;
     }
-}
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 333px;
-}
+    .sidebar {
+        width: 100%; /* 手机上侧边栏占满宽度 */
+        margin-left: 0;
+    }
 
-.text-status {
-    color: #a8a7a7;
-    font: 16px Arial, sans-serif;
-    display: inline-block;
-    width: 138.59px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
+    .venue-selection {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* 修复日期选择器在手机上可能过宽的问题 */
+    .date-selector {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    
+    .time-slot-table th:first-child,
+    .time-slot-table td:first-child {
+        position: sticky;
+        left: 0;
+        background: #fff;
+        z-index: 2;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
 }
