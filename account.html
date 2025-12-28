@@ -75,10 +75,9 @@
                 </div>
 
                 <div class="pagination">
-                    <button disabled>‹</button>
+                    <button class="page-arrow" disabled>‹</button>
                     <button class="active">1</button>
-
-                    <button>›</button>
+                    <button class="page-arrow" disabled>›</button>
                 </div>
             </div>
         </main>
@@ -145,7 +144,7 @@
                             
                             <div class="date-row">
                                 <img src="image/calendar-icon.png" class="info-icon icon-left">
-                                ${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}
+                                ${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日
                                 <img src="image/calendar-icon2.png" class="info-icon icon-right">
                             </div>
                             <div class="time-row">
@@ -233,7 +232,7 @@
     </script>
      <!-- lower 放在页面最后，作为图片展示 -->
     
-     <div class="lower" style="text-align:center; margin: -24px 0 12px 0;">
+     <div class="lower" style="text-align:center; margin: -16px 0 12px 0;">
         <img src="image/lower.jpg" alt="页面底部图片" style="max-width:100%;height:auto;">
     </div>
 </body>
