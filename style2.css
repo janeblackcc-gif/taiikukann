@@ -120,7 +120,7 @@
 }
 
 .banner-image {
-    width: 100%;        /* 占满容器宽度 */
+    width: 400px;        /* 占满容器宽度 */
     height: 104px;
     margin-left: -19px;     
 }
