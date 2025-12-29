@@ -120,9 +120,9 @@
 }
 
 .banner-image {
-    width: 400px;
+    width: 105%;        /* 占满容器宽度 */
     height: 104px;
-    margin-left: -19px;
+    margin-left: -19px;     
 }
 
 .card-list {
