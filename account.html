@@ -202,6 +202,8 @@
                         // 显示模态框并禁止背景滚动
                         modal.style.display = 'flex';
                         document.body.style.overflow = 'hidden';
+                        document.body.style.position = 'fixed';
+                        document.body.style.width = '100%';
                     });
                 });
                 
@@ -209,6 +211,8 @@
                 document.querySelector('.confirm-btn').addEventListener('click', function() {
                     modal.style.display = 'none';
                     document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
                 });
                 
                 // 点击模态框外部关闭
@@ -216,6 +220,8 @@
                     if (event.target === modal) {
                         modal.style.display = 'none';
                         document.body.style.overflow = '';
+                        document.body.style.position = '';
+                        document.body.style.width = '';
                     }
                 });
             }
