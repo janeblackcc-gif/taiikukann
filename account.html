@@ -40,7 +40,7 @@
             <h1 class="title desktop-only">体育场馆管理与预约系统</h1>
             <div class="spacer"></div>
             <div class="user-info">
-                <span class="user-name desktop-only">李庚泽</span>
+                <span class="user-name desktop-only">余得水</span>
                 <span class="user-points desktop-only">运动时: 390.00 元</span>
                 <button class="recharge-btn">我的账号</button>
                 <button class="logout-btn">登出</button>
@@ -100,7 +100,16 @@
     </div>
 
     <script>
-        
+        // 动态生成预约编号
+        function generateBookingId() {
+            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let id = 'RB-';
+            for (let i = 0; i < 10; i++) {
+                id += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return id;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // 按周计划生成预约文本
             function getBookingTimeByWeekday(day) {
@@ -140,7 +149,7 @@
                             <div class="booking-title">深圳校区健身房</div>
                         </div>
                         <div class="booking-info">
-                            <div class="booking-id">#RB-96JVNVFW94 运动时 ¥5</div>
+                            <div class="booking-id">#${generateBookingId()} 运动时 ¥5</div>
                             
                             <div class="date-row">
                                 <img src="image/calendar-icon.png" class="info-icon icon-left">
@@ -169,7 +178,7 @@
                             <div class="booking-title">深圳校区游泳池</div>
                         </div>
                         <div class="booking-info">
-                            <div class="booking-id">#RB-K7NQTHWX3M 运动时 ¥5</div>
+                            <div class="booking-id">#${generateBookingId()} 运动时 ¥5</div>
                             
                             <div class="date-row">
                                 <img src="image/calendar-icon.png" class="info-icon icon-left">
