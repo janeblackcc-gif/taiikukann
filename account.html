@@ -130,7 +130,7 @@
                 contentGrid.innerHTML = '';
                 
                                
-              // 创建今天的预约卡片
+              // 创建今天的预约卡片 - 健身房
                 const todayCard = document.createElement('div');
                 todayCard.className = 'booking-card';
                 todayCard.innerHTML = `
@@ -158,6 +158,35 @@
                     <span class="status-tag">已预约</span>
                 `;
                 contentGrid.appendChild(todayCard);
+
+                // 创建今天的预约卡片 - 游泳池
+                const swimCard = document.createElement('div');
+                swimCard.className = 'booking-card';
+                swimCard.innerHTML = `
+                    <div class="card-content">
+                        <div class="card-header">
+                            <img src="image/warn.png" alt="警告" class="warn-icon">
+                            <div class="booking-title">深圳校区游泳池</div>
+                        </div>
+                        <div class="booking-info">
+                            <div class="booking-id">#RB-K7NQTHWX3M 运动时 ¥5</div>
+                            
+                            <div class="date-row">
+                                <img src="image/calendar-icon.png" class="info-icon icon-left">
+                                ${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日
+                                <img src="image/calendar-icon2.png" class="info-icon icon-right">
+                            </div>
+                            <div class="time-row">
+                                19:30 - 21:00
+                                <img src="image/clock-icon.png" class="info-icon icon-right">
+                            </div>
+                            
+                            <div class="location-row">深圳校区游泳池-场地1</div>
+                        </div>
+                    </div>
+                    <span class="status-tag">已预约</span>
+                `;
+                contentGrid.appendChild(swimCard);
             }
 
             // 执行更新
@@ -193,10 +222,13 @@
                         const dateText = card.querySelector('.date-row').textContent.trim();
                         const timeText = card.querySelector('.time-row').textContent.trim();
                         const locationText = card.querySelector('.location-row').textContent;
+                        const venueText = card.querySelector('.booking-title').textContent;
                         
                         // 更新模态框信息
+                        document.getElementById('modal-venue').textContent = venueText;
                         document.getElementById('modal-date').textContent = dateText;
                         document.getElementById('modal-time').textContent = timeText;
+                        document.getElementById('modal-location').textContent = locationText;
                         document.getElementById('modal-id').textContent = bookingId;
 
                         // 显示模态框并禁止背景滚动
