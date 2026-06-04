@@ -137,38 +137,11 @@
                 
                 const contentGrid = document.querySelector('.content-grid');
                 contentGrid.innerHTML = '';
-                
-                               
-              // 创建今天的预约卡片 - 健身房
-                const todayCard = document.createElement('div');
-                todayCard.className = 'booking-card';
-                todayCard.innerHTML = `
-                    <div class="card-content">
-                        <div class="card-header">
-                            <img src="image/warn.png" alt="警告" class="warn-icon">
-                            <div class="booking-title">深圳校区健身房</div>
-                        </div>
-                        <div class="booking-info">
-                            <div class="booking-id">#${generateBookingId()} 运动时 ¥5</div>
-                            
-                            <div class="date-row">
-                                <img src="image/calendar-icon.png" class="info-icon icon-left">
-                                ${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日
-                                <img src="image/calendar-icon2.png" class="info-icon icon-right">
-                            </div>
-                            <div class="time-row">
-                                ${getBookingTimeByWeekday(today.getDay())}
-                                <img src="image/clock-icon.png" class="info-icon icon-right">
-                            </div>
-                            
-                            <div class="location-row">深圳校区健身房-场地1</div>
-                        </div>
-                    </div>
-                    <span class="status-tag">已预约</span>
-                `;
-                contentGrid.appendChild(todayCard);
 
                 // 创建今天的预约卡片 - 游泳池
+                const prevSlot = localStorage.getItem('swimSlot');
+                const swimTime = (prevSlot === '16:30 - 18:00') ? '19:30 - 21:00' : '16:30 - 18:00';
+                localStorage.setItem('swimSlot', swimTime);
                 const swimCard = document.createElement('div');
                 swimCard.className = 'booking-card';
                 swimCard.innerHTML = `
@@ -186,7 +159,7 @@
                                 <img src="image/calendar-icon2.png" class="info-icon icon-right">
                             </div>
                             <div class="time-row">
-                                19:30 - 21:00
+                                ${swimTime}
                                 <img src="image/clock-icon.png" class="info-icon icon-right">
                             </div>
                             
@@ -198,9 +171,6 @@
                 contentGrid.appendChild(swimCard);
             }
 
-            // 执行更新
-            updateBookingCards();
-            
             // 事件监听设置
             const tabItems = document.querySelectorAll('.tab-item');
             tabItems.forEach(tab => {
