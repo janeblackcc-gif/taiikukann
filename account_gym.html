@@ -10,26 +10,19 @@
     /* 覆盖全局样式，消除强制撑开的高度 */
         .main-container {
             min-height: auto !important;
-            padding-bottom: 10px !important; /* 稍微留一点点底边距即可 */
-            padding-top: 8px !important;      /* 原本是 20px，改成 8px 就会紧凑很多 */
+            padding-bottom: 10px !important;
+            padding-top: 8px !important;
     }
-        /* ⬇️⬇️⬇️ 新增代码：收紧卡片和按钮之间的距离 ⬇️⬇️⬇️ */
-
-        /* 1. 减小卡片列表容器的下边距 */
         .card-list {
-            margin-bottom: 0px !important; /* 原本可能是 20px */
-            padding-bottom: 0px !important; /* 减少内部留白 */
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
         }
-
-        /* 2. 减小分页按钮的上边距 */
         .pagination {
-            margin-top: 5px !important;  /* 原本是 20px，改成 5px 就会紧凑很多 */
-            margin-bottom: 15px !important; /* 保持底部的距离 */
+            margin-top: 5px !important;
+            margin-bottom: 15px !important;
         }
-
-        /* 3. 调整外层大框的内边距，让整体看起来更小巧 */
         .content-wrapper {
-            padding-bottom: 10px !important; /* 收缩大框底部 */
+            padding-bottom: 10px !important;
         }
     </style>
 </head>
@@ -48,7 +41,6 @@
         </div>
     </header>
 
-    <!-- 添加图片区域 -->
     <div class="banner-container">
         <img src="image/1.png" alt="Banner" class="banner-image">
     </div>
@@ -70,7 +62,6 @@
 
                 <div class="card-list">
                     <div class="content-grid">
-                        <!-- 卡片内容会由JavaScript动态生成 -->
                     </div>
                 </div>
 
@@ -83,7 +74,6 @@
         </main>
     </div>
 
-    <!-- 添加模态窗口 -->
     <div id="bookingModal" class="booking-modal">
       <div class="modal-content">
         <h2>我的预约</h2>
@@ -100,7 +90,6 @@
     </div>
 
     <script>
-        // 动态生成预约编号
         function generateBookingId() {
             const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             let id = 'RB-';
@@ -111,67 +100,53 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // 按周计划生成预约文本
             function getBookingTimeByWeekday(day) {
                 switch(day) {
-                    case 1: // 周一
-                    case 5: // 周五
+                    case 1: case 5:
                         return "20:00 - 22:00";
-                    case 2: // 周二
-                    case 4: // 周四
+                    case 2: case 4:
                         return "20:00 - 22:00";
-                    case 3: // 周三
+                    case 3:
                         return "20:00 - 22:00";
-                    case 6 : case 0: // 周六
+                    case 6: case 0:
                         return "20:00 - 22:00";
                     default:
-                        return "20:00 - 22:00"; // 其他日期默认时段
+                        return "20:00 - 22:00";
                 }
             }
             
-            // 动态生成预约卡片
             function updateBookingCards() {
                 const today = new Date();
-                const tomorrow = new Date(today);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                
                 const contentGrid = document.querySelector('.content-grid');
                 contentGrid.innerHTML = '';
 
-                // 创建今天的预约卡片 - 游泳池
-                const prevSlot = localStorage.getItem('swimSlot');
-                const swimTime = (prevSlot === '16:30 - 18:00') ? '19:30 - 21:00' : '16:30 - 18:00';
-                localStorage.setItem('swimSlot', swimTime);
-                const swimCard = document.createElement('div');
-                swimCard.className = 'booking-card';
-                swimCard.innerHTML = `
+                const gymCard = document.createElement('div');
+                gymCard.className = 'booking-card';
+                gymCard.innerHTML = `
                     <div class="card-content">
                         <div class="card-header">
                             <img src="image/warn.png" alt="警告" class="warn-icon">
-                            <div class="booking-title">深圳校区游泳池</div>
+                            <div class="booking-title">深圳校区健身房</div>
                         </div>
                         <div class="booking-info">
                             <div class="booking-id">#${generateBookingId()} 运动时 ¥5</div>
-                            
                             <div class="date-row">
                                 <img src="image/calendar-icon.png" class="info-icon icon-left">
                                 ${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日
                                 <img src="image/calendar-icon2.png" class="info-icon icon-right">
                             </div>
                             <div class="time-row">
-                                ${swimTime}
+                                ${getBookingTimeByWeekday(today.getDay())}
                                 <img src="image/clock-icon.png" class="info-icon icon-right">
                             </div>
-                            
-                            <div class="location-row">深圳校区游泳池-场地1</div>
+                            <div class="location-row">深圳校区健身房-场地1</div>
                         </div>
                     </div>
                     <span class="status-tag">已预约</span>
                 `;
-                contentGrid.appendChild(swimCard);
+                contentGrid.appendChild(gymCard);
             }
 
-            // 事件监听设置
             const tabItems = document.querySelectorAll('.tab-item');
             tabItems.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -181,21 +156,19 @@
             });
             
             document.querySelector('.logout-btn').addEventListener('click', () => {
-                window.location.href = 'account_gym.html';
+                window.location.href = 'account.html';
             });
             
             document.querySelector('.recharge-btn').addEventListener('click', () => {
                 window.location.href = 'index.html';
             });
 
-            // 设置预约卡片点击显示详情
             function setupCardClickHandlers() {
                 const bookingCards = document.querySelectorAll('.booking-card');
                 const modal = document.getElementById('bookingModal');
                 
                 bookingCards.forEach(card => {
                     card.addEventListener('click', function() {
-                        // 从卡片中提取信息
                         let rawIdText = card.querySelector('.booking-id').textContent;
                         const bookingId = rawIdText.split(' ')[0];
                         const dateText = card.querySelector('.date-row').textContent.trim();
@@ -203,14 +176,12 @@
                         const locationText = card.querySelector('.location-row').textContent;
                         const venueText = card.querySelector('.booking-title').textContent;
                         
-                        // 更新模态框信息
                         document.getElementById('modal-venue').textContent = venueText;
                         document.getElementById('modal-date').textContent = dateText;
                         document.getElementById('modal-time').textContent = timeText;
                         document.getElementById('modal-location').textContent = locationText;
                         document.getElementById('modal-id').textContent = bookingId;
 
-                        // 显示模态框并禁止背景滚动
                         modal.style.display = 'flex';
                         document.body.style.overflow = 'hidden';
                         document.body.style.position = 'fixed';
@@ -218,7 +189,6 @@
                     });
                 });
                 
-                // 确认按钮关闭模态框
                 document.querySelector('.confirm-btn').addEventListener('click', function() {
                     modal.style.display = 'none';
                     document.body.style.overflow = '';
@@ -226,7 +196,6 @@
                     document.body.style.width = '';
                 });
                 
-                // 点击模态框外部关闭
                 window.addEventListener('click', function(event) {
                     if (event.target === modal) {
                         modal.style.display = 'none';
@@ -237,7 +206,6 @@
                 });
             }
             
-            // 在卡片生成后设置点击事件
             updateBookingCards();
             setupCardClickHandlers();
 
@@ -250,7 +218,6 @@
             }
         });
     </script>
-     <!-- lower 放在页面最后，作为图片展示 -->
     
      <div class="lower" style="text-align:center; margin: -16px 0 12px 0;">
         <img src="image/lower.jpg" alt="页面底部图片" style="max-width:100%;height:auto;">
